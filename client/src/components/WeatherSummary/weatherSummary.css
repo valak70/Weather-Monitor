@@ -1,0 +1,106 @@
+/* WeatherSummary.css */
+
+/* General container styling */
+.weather-summary-container {
+  width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* display: flex; Flex to center the content inside */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  select {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  /* Chart container to make it responsive */
+  .chart-container {
+    position: relative;
+    height: 400px;
+    width: 50%;
+  }
+  
+  /* Weather data (text) styling */
+  .weather-data {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  .weather-data p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #444;
+  }
+  
+  .weather-data strong {
+    color: #333;
+  }
+  
+  p.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-top: 30px;
+  }
+
+  .redirect-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .redirect-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .weather-summary-container {
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    select {
+      max-width: 150px;
+      font-size: 14px;
+    }
+  
+    .chart-container {
+      height: 300px;
+    }
+  
+    .weather-data p {
+      font-size: 14px;
+    }
+  }
+  
