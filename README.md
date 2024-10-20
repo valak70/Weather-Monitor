@@ -127,7 +127,11 @@ function calculateDominantWeather(data) {
 - The system continuously monitors the latest weather data and compares it against these thresholds.
 
 #### Alert Triggers
-- If thresholds are breached, **alerts are logged to the console** (future plans include sending email notifications).
+- If thresholds are breached, **alerts are logged to the console** (future plans include sending email 
+notifications).  
+  Example:
+  ![image](https://github.com/user-attachments/assets/2b679861-2bff-44e8-a0b2-9771834f466c)
+
 - For each city, the system tracks the **number of triggered alerts** and displays a summary of alerts over a **7-day window**.
 
 
