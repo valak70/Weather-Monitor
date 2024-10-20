@@ -39,9 +39,10 @@ export const rollUpDailyWeather = async (targetDate = new Date()) => {
     const data = cityGroup.data;
 
     // Calculate aggregates for the city
-    const avgTemp = data.reduce((sum, entry) => sum + entry.temp, 0) / data.length;
-    const maxTemp = Math.max(...data.map(entry => entry.temp));
-    const minTemp = Math.min(...data.map(entry => entry.temp));
+    const avgTemp = (data.reduce((sum, entry) => sum + entry.temp, 0) / data.length).toFixed(2);
+    const maxTemp = Math.max(...data.map(entry => entry.temp)).toFixed(2);
+    const minTemp = Math.min(...data.map(entry => entry.temp)).toFixed(2);
+
     const dominantCondition = calculateDominantWeather(data); // Implement this function
 
     // Store the rolled-up summary for the city
@@ -66,8 +67,8 @@ export const rollUpDailyWeather = async (targetDate = new Date()) => {
 function calculateDominantWeather(data) {
   // Count the frequency of each weather type
   const weatherCounts = data.reduce((counts, item) => {
-      counts[item.weather] = (counts[item.weather] || 0) + 1;
-      return counts;
+    counts[item.weather] = (counts[item.weather] || 0) + 1;
+    return counts;
   }, {});
 
   // Total number of weather data points
@@ -76,24 +77,24 @@ function calculateDominantWeather(data) {
   // Calculate probabilities of each weather type
   const weatherProbabilities = {};
   for (const weather in weatherCounts) {
-      weatherProbabilities[weather] = weatherCounts[weather] / totalWeatherCount;
+    weatherProbabilities[weather] = weatherCounts[weather] / totalWeatherCount;
   }
 
   // Calculate information content for each weather type (-log(probability))
   const weatherInformation = {};
   for (const weather in weatherProbabilities) {
-      weatherInformation[weather] = -Math.log(weatherProbabilities[weather]);
+    weatherInformation[weather] = -Math.log(weatherProbabilities[weather]);
   }
 
   // Multiply frequency by information content to get the overall score for each weather type
   const weatherScores = {};
   for (const weather in weatherCounts) {
-      weatherScores[weather] = weatherCounts[weather] * weatherInformation[weather];
+    weatherScores[weather] = weatherCounts[weather] * weatherInformation[weather];
   }
 
   // Find the weather type with the highest score
-  const dominantWeather = Object.keys(weatherScores).reduce((a, b) => 
-      weatherScores[a] > weatherScores[b] ? a : b
+  const dominantWeather = Object.keys(weatherScores).reduce((a, b) =>
+    weatherScores[a] > weatherScores[b] ? a : b
   );
 
   return dominantWeather;

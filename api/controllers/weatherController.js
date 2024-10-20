@@ -2,7 +2,7 @@
 import WeatherSummary from '../models/weatherSummary.js';
 import axios from 'axios';
 import WeatherData from '../models/weatherData.js';
-const cities = ['Delhi', 'Mumbai', 'Chennai', 'Bangalore', 'Kolkata', 'Hyderabad'];
+const cities = ['Delhi', 'Mumbai', 'Chennai', 'Bengaluru', 'Kolkata', 'Hyderabad'];
 // Get daily weather summary from the database
 export const getSummary = async (req, res) => {
   try {
